@@ -3,7 +3,7 @@ require("dotenv").config();
 const cors = require("cors");
 const { connectDB } = require("./db/index");
 const bodyParser = require("body-parser");
-// const patientRoute = require("./routes/loginRoutes");
+
 const handleClick = require('./jobs/handleClick');
 const getUserInfo = require("./jobs/getUserInfo");
 const app = express();
@@ -21,15 +21,15 @@ app.get("/", async (req, res) => {
 
 // Endpoint to handle button click
 app.post('/click', async (req, res) => {
-    const { userId } = req.body; // userId is passed from the frontend
-    const result = await handleClick(userId); // Call handleClick with userId
+    const { userId } = req.body; 
+    const result = await handleClick(userId); 
     res.json(result);
   });
   
   // Endpoint to get user data
   app.get('/user/:userId', async (req, res) => {
-    const { userId } = req.params; // userId is passed as a URL parameter
-    const userData = await getUserInfo(userId); // Call getUserData with userId
+    const { userId } = req.params; 
+    const userData = await getUserInfo(userId); 
     res.json(userData);
   });
 
